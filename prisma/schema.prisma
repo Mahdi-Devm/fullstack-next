@@ -12,3 +12,40 @@ datasource db {
   provider = "sqlite"
   url      = "file:./dev.db"
 }
+
+model Category {
+  id        Int        @id @default(autoincrement())
+  name      String     @unique
+  slug      String     @unique
+  palettes  PaletteCategory[]
+  createdAt DateTime   @default(now())
+  updatedAt DateTime   @updatedAt
+}
+
+model Palette {
+  id          Int                 @id @default(autoincrement())
+  title       String
+  slug        String             @unique
+  likes       Int                @default(0)
+  createdAt   DateTime           @default(now())
+  updatedAt   DateTime           @updatedAt
+  colors      Color[]
+  categories  PaletteCategory[]
+}
+
+model Color {
+  id         Int      @id @default(autoincrement())
+  hex        String   
+  order      Int      
+  paletteId  Int
+  palette    Palette  @relation(fields: [paletteId], references: [id])
+}
+
+model PaletteCategory {
+  palette    Palette   @relation(fields: [paletteId], references: [id])
+  paletteId  Int
+  category   Category  @relation(fields: [categoryId], references: [id])
+  categoryId Int
+
+  @@id([paletteId, categoryId]) 
+}

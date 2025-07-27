@@ -1,5 +1,5 @@
 export const itmssidebarleft = [
-  { title: "New", href: "/new", icon: "/icon/star-removebg-preview.png" },
+  { title: "New", href: "/f", icon: "/icon/star-removebg-preview.png" },
   {
     title: "random",
     href: "/random",
