@@ -1,5 +1,6 @@
 import PaletteCard from "../../../components/ui/PaletteCard";
 import { getCategoryById } from "../../../lib/GetCategoryByTitle/GetCategoryById";
+
 export default async function Page({
   params,
 }: {

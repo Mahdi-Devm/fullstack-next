@@ -50,3 +50,18 @@ export const items = [
   { id: 33, name: "Christmas" },
   { id: 34, name: "Halloween" },
 ];
+
+export const menuItems = [
+  { label: "Palettes", href: "/" },
+  { label: "Create", href: "/create" },
+  { label: "Collection", href: "/collection" },
+  { label: "About", href: "/about" },
+  {
+    label: "Instagram",
+    href: "https://instagram.com/mahdi1751m",
+    external: true,
+  },
+  { label: "Terms of Service", href: "/termsofservice" },
+  { label: "Privacy Policy", href: "/privacy" },
+  { label: "Git hub", href: "https://github.com/Mahdi-Devm", external: true },
+];
