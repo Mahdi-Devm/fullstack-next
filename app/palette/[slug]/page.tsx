@@ -2,7 +2,7 @@ import Link from "next/link";
 import { getCategoryBySlug } from "../../../lib/getCategoryBySlug/getCategoryBySlug";
 import PaletteCard from "../../../components/ui/PaletteCard";
 import Borderb from "../../../components/ui/Borderb";
-import { Category, CategorySummary } from "../../../types/category";
+import { CategorySummary } from "../../../types/category";
 
 export default async function Page({
   params,
