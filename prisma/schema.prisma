@@ -31,6 +31,15 @@ model Palette {
   updatedAt   DateTime           @updatedAt
   colors      Color[]
   categories  PaletteCategory[]
+  likesList   Like[]
+}
+
+model Like {
+  id         Int      @id @default(autoincrement())
+  palette    Palette  @relation(fields: [paletteId], references: [id])
+  paletteId  Int
+  userKey    String   @default("1")
+  createdAt  DateTime @default(now())
 }
 
 model Color {

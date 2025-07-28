@@ -8,7 +8,10 @@ export async function getCategoryById(id: number): Promise<Category | null> {
       palettes: {
         include: {
           palette: {
-            include: { colors: true },
+            include: {
+              colors: true,
+              categories: { include: { category: true } },
+            },
           },
         },
       },

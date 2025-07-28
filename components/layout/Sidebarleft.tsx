@@ -32,12 +32,14 @@ function Sidebarleft() {
 
       <div className="flex flex-col gap-2 w-full">
         {items.map((item, index) => (
-          <button
-            key={index}
-            className="text-left px-5 py-1 capitalize transition-colors hover:text-stone-900 font-light"
-          >
-            {item}
-          </button>
+          <Link href={`/category/${item.id}`} key={index}>
+            <button
+              key={index}
+              className="text-left px-5 py-1 capitalize transition-colors hover:text-stone-900 font-light"
+            >
+              {item.name}
+            </button>
+          </Link>
         ))}
       </div>
     </div>

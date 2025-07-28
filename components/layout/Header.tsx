@@ -26,9 +26,16 @@ function Header() {
           />
         </div>
 
-        <div className="search-container">
-          <input type="search" placeholder="search palettes" />
-          <CiSearch className="icon" size={20} />
+        <div className="relative w-full border border-border rounded-[20px] p-1">
+          <input
+            type="search"
+            placeholder="search palettes"
+            className="pl-10 w-full h-8 rounded-[20px] focus:outline-none"
+          />
+          <CiSearch
+            className="absolute left-3 top-1/2 -translate-y-1/2 text-black pointer-events-none"
+            size={20}
+          />
         </div>
 
         <div className="w-[500px] flex items-center justify-between gap-6">

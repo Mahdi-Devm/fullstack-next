@@ -1,8 +1,8 @@
-import PaletteCard from "../components/ui/PaletteCard";
-import { getCategoryById } from "../lib/GetCategoryByTitle/GetCategoryById";
+import PaletteCard from "../../components/ui/PaletteCard";
+import { getCategoryById } from "../../lib/GetCategoryByTitle/GetCategoryById";
 
 export default async function Page() {
-  const category = await getCategoryById(1);
+  const category = await getCategoryById(2);
 
   const palettes = category?.palettes.map((p) => p.palette) || [];
   return (
