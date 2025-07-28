@@ -64,7 +64,7 @@ function Sidebarright() {
           {palettes.map((palette) => (
             <div
               key={palette.id}
-              className="relative group flex flex-col h-25 overflow-hidden rounded-xl transition-all duration-300 hover:opacity-50 hover:h-27"
+              className="relative group flex flex-col h-25 overflow-hidden rounded-xl transition-all duration-300 hover:opacity-50 hover:h-26"
             >
               <button
                 className="absolute inset-0 z-10 flex items-center justify-center text-white text-xl font-bold opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-black/50 cursor-pointer"
