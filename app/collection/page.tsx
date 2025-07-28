@@ -1,7 +1,6 @@
 "use client";
 import React, { useState, useEffect } from "react";
 import GetAllPalettesByUserKey from "../../lib/GetAllPaletteByparams/GetAllPaletteByparams";
-import AddcollectionById from "../../lib/AddcollectionById/AddcollectionById";
 import BtnLikePaletteCard from "../../components/ui/BtnLikePaletteCard";
 import { timeSince } from "../../utils/timeSince";
 
@@ -27,11 +26,6 @@ export default function Page() {
   useEffect(() => {
     fetchPalettes();
   }, []);
-
-  async function handelremovelikelist(id: number) {
-    await AddcollectionById(id, "1");
-    await fetchPalettes();
-  }
 
   if (!palettes) {
     return <p className="text-center mt-10">Loading palettes...</p>;
