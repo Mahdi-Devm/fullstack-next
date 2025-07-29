@@ -9,7 +9,10 @@ const schema = z.object({
   username: z.string().min(3),
 });
 
-export default async function createUser(prevState: any, formData: FormData) {
+export default async function createUser(
+  prevState: unknown,
+  formData: FormData
+) {
   const validatedFields = schema.safeParse({
     email: formData.get("email"),
     password: formData.get("password"),

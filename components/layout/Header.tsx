@@ -5,8 +5,8 @@ import Borderb from "../ui/Borderb";
 import Loginbtn from "../ui/Loginbtn";
 import { cookies } from "next/headers";
 
-function Header() {
-  const cookieStore = cookies();
+async function Header() {
+  const cookieStore = await cookies();
   const token = cookieStore.get("token");
 
   const isLoggedIn = !!token;
