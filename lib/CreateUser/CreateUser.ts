@@ -1,38 +1,40 @@
-"use server";
-import { cookies } from "next/headers";
 import prisma from "../db";
 import jwt from "jsonwebtoken";
+
 interface CreateUserParams {
   password: string;
   email: string;
   username: string;
 }
+type PrismaError = {
+  code: string;
+  message: string;
+};
 
 export default async function CreateUsers({
   password,
   email,
   username,
 }: CreateUserParams) {
-  const user = await prisma.user.create({
-    data: {
-      password,
-      email,
-      username,
-    },
-  });
+  try {
+    const user = await prisma.user.create({
+      data: { password, email, username },
+    });
 
-  const token = jwt.sign(
-    { id: user.id, email: user.email },
-    process.env.JWT_SECRET as string,
-    {
-      expiresIn: "7d",
+    const token = jwt.sign(
+      { id: user.id, email: user.email },
+      process.env.JWT_SECRET as string,
+      { expiresIn: "7d" }
+    );
+
+    return { user, token };
+  } catch (error: unknown) {
+    const err = error as PrismaError;
+
+    if (err.code === "P2002") {
+      return { error: "Email already registered" };
     }
-  );
-  cookies().set("token", token, {
-    httpOnly: true,
-    secure: process.env.NODE_ENV === "production",
-    path: "/",
-    maxAge: 7 * 24 * 60 * 60,
-  });
-  return user;
+
+    return { error: "Something went wrong" };
+  }
 }

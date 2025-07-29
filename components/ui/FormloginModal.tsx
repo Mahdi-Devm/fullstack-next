@@ -3,11 +3,10 @@ import createUser from "../../app/actions";
 import { FaUser } from "react-icons/fa";
 import { MdEmail } from "react-icons/md";
 import { RiLockPasswordLine } from "react-icons/ri";
-
 const initialState = {
-  message: "",
+  error: false,
+  errors: {},
 };
-
 function FormloginModal() {
   const [state, formAction, pending] = useActionState(createUser, initialState);
 

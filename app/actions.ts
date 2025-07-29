@@ -9,27 +9,34 @@ const schema = z.object({
   username: z.string().min(3),
 });
 
-export default async function createUser(
-  prevState: unknown,
-  formData: FormData
-) {
-  const validatedFields = schema.safeParse({
+export default async function createUser(prev: unknown, formData: FormData) {
+  const parsed = schema.safeParse({
     email: formData.get("email"),
     password: formData.get("password"),
     username: formData.get("username"),
   });
 
-  if (!validatedFields.success) {
+  if (!parsed.success) {
     return {
-      errors: validatedFields.error.flatten().fieldErrors,
+      error: true,
+      errors: parsed.error.flatten().fieldErrors,
     };
   }
-  await CreateUsers({
-    email: validatedFields.data.email,
-    password: validatedFields.data.password,
-    username: validatedFields.data.username,
-  });
+
+  const result = await CreateUsers(parsed.data);
+
+  if ("error" in result) {
+    return {
+      error: true,
+      errors: {
+        email: [result.error],
+      },
+    };
+  }
+
   return {
+    error: false,
     message: "User created successfully!",
+    user: result,
   };
 }
