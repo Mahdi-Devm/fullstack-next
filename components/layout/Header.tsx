@@ -2,9 +2,15 @@ import Image from "next/image";
 import React from "react";
 import { CiSearch } from "react-icons/ci";
 import Borderb from "../ui/Borderb";
-import DropdownListHeader from "../ui/DropdownListHeader";
+import Loginbtn from "../ui/Loginbtn";
+import { cookies } from "next/headers";
 
 function Header() {
+  const cookieStore = cookies();
+  const token = cookieStore.get("token");
+
+  const isLoggedIn = !!token;
+
   return (
     <>
       <header className="w-full flex items-center justify-between p-3 gap-5">
@@ -38,13 +44,7 @@ function Header() {
           />
         </div>
 
-        <div className="w-[100px] md:w-[500px] flex items-center justify-between gap-6">
-          <div className="border border-gray-300 items-center rounded-xl hidden md:flex">
-            <Image src="/icon/chrome.png" alt="chrome" width={40} height={40} />
-            <button className="p-2 rounded-md">Add to Chrome</button>
-          </div>
-          <DropdownListHeader />
-        </div>
+        <Loginbtn isLoggedIn={isLoggedIn} />
       </header>
 
       <Borderb />

@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { TfiMore } from "react-icons/tfi";
 import Link from "next/link";
 import { menuItems } from "../../lib/data";
+import { IoCloseOutline } from "react-icons/io5";
 
 function DropdownListHeader() {
   const [isOpen, setIsOpen] = useState(false);
@@ -13,13 +14,26 @@ function DropdownListHeader() {
 
   return (
     <div className="relative inline-block text-left">
-      <TfiMore
-        size={30}
-        className="text-sm cursor-pointer"
-        onClick={toggleDropdown}
-        aria-expanded={isOpen}
-        aria-haspopup="true"
-      />
+      <div className="mr-5">
+        {isOpen === true ? (
+          <IoCloseOutline
+            size={30}
+            className="text-sm cursor-pointer bg-gray-100 rounded-md "
+            onClick={toggleDropdown}
+            aria-expanded={isOpen}
+            aria-haspopup="true"
+          />
+        ) : (
+          <TfiMore
+            size={30}
+            className="text-sm cursor-pointer"
+            onClick={toggleDropdown}
+            aria-expanded={isOpen}
+            aria-haspopup="true"
+          />
+        )}
+      </div>
+
       {isOpen && (
         <div className="absolute right-0 mt-2 w-56 bg-white border border-gray-300 rounded shadow-lg z-10">
           <ul>
