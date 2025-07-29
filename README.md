@@ -36,7 +36,7 @@ A beautiful fullstack clone of [ColorHunt](https://colorhunt.co/) built with **N
 
 1. **Clone the repository:**
 
-```bash
+---
 git clone https://github.com/your-username/colorhunt-clone.git
 cd colorhunt-clone
 
@@ -59,6 +59,7 @@ npx prisma generate
 
 npm run dev
 
+---
 🔐 Authentication Flow
 
     Registration form sends data to a server action with Zod validation.
